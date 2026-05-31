@@ -2,94 +2,99 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
-    /* Fundo cinza bem claro, confortável para leitura */
-    color: #333;
+    background-color: #0f172a; /* Azul escuro quase preto */
+    color: #e2e8f0; /* Texto claro/cinza-azulado */
     line-height: 1.6;
+    padding-bottom: 60px;
 }
 
 /* =====================================
-   2. HEADER (TOPO DO SITE)
+   2. HEADER INTELIGENTE
    ===================================== */
 header {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    /* Gradiente azul moderno */
-    color: white;
-    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto 30px auto;
-    border-radius: 0 0 16px 16px;
-    /* Bordas arredondadas na parte inferior */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex-direction: column-reverse; /* Inverte para a logo ficar em destaque no mobile */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 header .texto1 {
-    max-width: 70%;
+    max-width: 600px;
 }
 
 header .titulo {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    background: linear-gradient(to right, #38bdf8, #818cf8); /* Efeito de texto gradiente */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 header p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: #94a3b8;
 }
 
 header .logo {
-    max-height: 60px;
-    border-radius: 8px;
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    background-color: #1e293b;
+    border: 2px solid #334155;
+    padding: 5px;
 }
 
 /* =====================================
-   3. LAYOUT PRINCIPAL (MAIN)
+   3. ESTRUTURA DO LAYOUT (GRID)
    ===================================== */
 main {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr;
-    /* Base para mobile */
-    gap: 30px;
+    gap: 40px;
 }
 
-/* Quando a tela for maior (computador), divide o layout em duas colunas */
 @media (min-width: 768px) {
     main {
-        grid-template-columns: 1fr 2fr;
-        /* Recursos na esquerda (menor), posts na direita (maior) */
+        grid-template-columns: 1fr 2fr; /* Coluna menor na esquerda, maior na direita */
     }
 }
 
-/* Estilo padrão para os títulos das seções */
 .titulo2 {
-    font-size: 1.5rem;
-    color: #1e3c72;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #2a5298;
-    padding-bottom: 8px;
-    display: inline-block;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #38bdf8; /* Azul neon para destacar */
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
 /* =====================================
-   4. SEÇÃO DE RECURSOS (ESQUERDA)
+   4. RECURSOS (CARD DA ESQUERDA)
    ===================================== */
 .container-main {
-    background-color: white;
+    background-color: #1e293b; /* Fundo do card */
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    border: 1px solid #334155;
     height: fit-content;
 }
 
@@ -98,138 +103,116 @@ main {
 }
 
 .lista li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
+    background-color: #0f172a;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
     font-size: 0.95rem;
-}
-
-/* Adiciona um marcador personalizado azul antes de cada item da lista */
-.lista li::before {
-    content: "✦";
-    position: absolute;
-    left: 0;
-    color: #2a5298;
-    font-weight: bold;
+    color: #cbd5e1;
+    border-left: 4px solid #818cf8; /* Detalhe roxo na lateral */
 }
 
 /* =====================================
-   5. SEÇÃO DE POSTAGENS (DIREITA)
+   5. MURAL DE POSTAGENS (DIREITA)
    ===================================== */
 .Post1 {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
 }
 
-/* Estilização de cada card de postagem */
-.postagem,
-.postagem2,
-.postagem3 {
-    background-color: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
+/* Estilo unificado para os três tipos de posts */
+.postagem, .postagem2, .postagem3 {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
-.postagem:hover,
-.postagem2:hover,
-.postagem3:hover {
-    transform: translateY(-3px);
-    /* Efeito sutil ao passar o mouse */
-}
-
-.postagem h3,
-.postagem2 h3,
-.postagem3 h3 {
-    color: #333;
+.postagem h3, .postagem2 h3, .postagem3 h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
-.postagem p,
-.postagem2 p,
-.postagem3 p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-/* Imagens dos posts adaptáveis */
-.postagem img,
-.postagem2 img,
-.postagem3 img {
-    width: 100%;
-    max-height: 350px;
-    object-fit: cover;
-    /* Recorta a imagem sem distorcer */
-    border-radius: 8px;
+.postagem p, .postagem2 p, .postagem3 p {
+    color: #94a3b8;
     margin-bottom: 20px;
 }
 
+.postagem img, .postagem2 img, .postagem3 img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border: 1px solid #334155;
+}
+
 /* =====================================
-   6. CAIXA DE COMENTÁRIOS
+   6. CAIXA DE COMENTÁRIOS INTERATIVA
    ===================================== */
 .comment-box {
-    background-color: #f8fafc;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    background-color: #0f172a;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #334155;
 }
 
 .comment-box label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #4a5568;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .comment-box textarea {
     width: 100%;
-    height: 80px;
-    padding: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    resize: vertical;
-    /* Permite aumentar apenas a altura */
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    transition: border-color 0.2s;
+    height: 70px;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    resize: none;
+    transition: all 0.3s;
 }
 
+/* Quando o usuário clica para digitar */
 .comment-box textarea:focus {
     outline: none;
-    border-color: #2a5298;
-    /* Borda destaca quando o usuário clica */
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
-/* Botão de enviar */
+/* Botão estilo aplicativo moderno */
 .comment-box button {
-    background-color: #2a5298;
-    color: white;
+    margin-top: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+    color: #0f172a;
+    font-weight: 700;
     border: none;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .comment-box button:hover {
-    background-color: #1e3c72;
-    /* Escurece o botão no hover */
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
 
 /* =====================================
-   7. FOOTER (RODAPÉ)
+   7. RODAPÉ
    ===================================== */
 footer {
     text-align: center;
-    padding: 40px 20px;
-    color: #888;
-    font-size: 0.9rem;
-    margin-top: 50px;
-    border-top: 1px solid #e2e8f0;
+    margin-top: 80px;
+    color: #64748b;
+    font-size: 0.85rem;
 }
-
