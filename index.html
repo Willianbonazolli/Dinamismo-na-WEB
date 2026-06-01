@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <link rel="stylesheet" href="style.css">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Mural</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mural News</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <main class="pagina">
+    <nav class="menu-superior" aria-label="Navegação principal">
+      <a class="marca" href="index.html">MURAL NEWS</a>
+      <div class="links-menu">
+        <a href="#tituloPosts">Posts</a>
+        <a href="#tituloUsuarios">Autores</a>
+      </div>
+    </nav>
 
-    <header>
-
-        <div class="texto1">
-            <h1 class="titulo">Mural</h1>
-            <p>O Mural é um aplicativo de mensagens instantâneas que permite aos usuários se comunicarem em tempo real e
-                compartilhamento de arquivos e conteúdos de aula. </p>
-        </div>
-
-        <div class="container-header">
-            <a href="index.html">
-                <img class="logo" src="assets/" alt="" />
-            </a>
-
-        </div>
+    <header class="topo">
+      <p>JSONPlaceholder</p>
+      <h1>Mural</h1>
     </header>
 
-    <main>
+    <section class="barra-status" aria-label="Resumo">
+      <p id="mensagem" aria-live="polite">Carregando...</p>
 
-        <div class="container-main">
-            <h2 class="titulo2">Recursos do Mural</h2>
-            <ul class="lista">
-                <li>Mensagens instantâneas: Envie mensagens de texto em tempo real para seus colegas de classe e
-                    professores.</li>
-                <li>Compartilhamento de arquivos: Compartilhe documentos, imagens e outros arquivos relacionados às
-                    aulas.</li>
-                <li>Organização por tópicos: Crie tópicos para organizar as discussões e facilitar a localização de
-                    informações.</li>
-                <li>Notificações: Receba notificações em tempo real sobre novas mensagens e atividades no mural.</li>
-                <li>Acesso multiplataforma: Acesse o mural de qualquer dispositivo com conexão à internet.</li>
-            </ul>
+      <dl class="numeros">
+        <div>
+          <dt>Usuários</dt>
+          <dd id="totalUsuarios">0</dd>
+        </div>
+        <div>
+          <dt>Posts</dt>
+          <dd id="totalPosts">0</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="grade">
+      <section class="painel painel-posts" aria-labelledby="tituloPosts">
+        <div class="painel-cabecalho">
+          <h2 id="tituloPosts">Posts</h2>
         </div>
 
-        <div class="Post1">
-            <h2 class="titulo2">Postagens Recentes</h2>
-            <div class="postagem">
-                <h3>Postagem 1</h3>
-                <p>Conteúdo da postagem 1...</p>
-                <img src="assets/postagem1.jpg" alt="Postagem 1">
-                <div class="comment-box">
-                    <label for="comment1">Comente:</label>
-                    <textarea id="comment1" placeholder="Escreva um comentário..."></textarea>
-                    <button type="button">Enviar comentário</button>
-                </div>
-            </div>
+        <form id="formPost" class="formulario" autocomplete="off">
+          <input type="hidden" id="idPost">
 
-            <div class="postagem2">
-                <h3>Postagem 2</h3>
-                <p>Conteúdo da postagem 2...</p>
-                <img src="assets/postagem2.jpg" alt="Postagem 2">
-                <div class="comment-box">
-                    <label for="comment2">Comente:</label>
-                    <textarea id="comment2" placeholder="Escreva um comentário..."></textarea>
-                    <button type="button">Enviar comentário</button>
-                </div>
-            </div>
-            
-            <div class="postagem3">
-                <h3>Postagem 3</h3>
-                <p>Conteúdo da postagem 3...</p>
-                <img src="assets/postagem3.jpg" alt="Postagem 3">
-                <div class="comment-box">
-                    <label for="comment3">Comente:</label>
-                    <textarea id="comment3" placeholder="Escreva um comentário..."></textarea>
-                    <button type="button">Enviar comentário</button>
-                </div>
-            </div>
+          <label for="tituloPost">Título</label>
+          <input type="text" id="tituloPost" placeholder="Título do post" required>
+
+          <label for="textoPost">Texto</label>
+          <textarea id="textoPost" rows="4" placeholder="Escreva o recado" required></textarea>
+
+          <label for="autorPost">Autor</label>
+          <select id="autorPost" required></select>
+
+          <div class="acoes-form">
+            <button type="submit" id="btnPost">Adicionar</button>
+            <button type="button" id="cancelarPost" class="botao-secundario" hidden>Cancelar</button>
+          </div>
+        </form>
+
+        <div id="listaPosts" class="lista-cards lista-noticias" aria-live="polite"></div>
+      </section>
+
+      <aside class="painel painel-autores" aria-labelledby="tituloUsuarios">
+        <div class="painel-cabecalho">
+          <h2 id="tituloUsuarios">Autores</h2>
         </div>
 
-    </main>
+        <form id="formUsuario" class="formulario" autocomplete="off">
+          <input type="hidden" id="idUsuario">
 
-    <footer>
-        <p>&copy; 2026 Mural. Todos os direitos reservados.</p>
-    </footer>
+          <label for="nomeUsuario">Nome</label>
+          <input type="text" id="nomeUsuario" placeholder="Nome" required>
 
+          <label for="emailUsuario">E-mail</label>
+          <input type="email" id="emailUsuario" placeholder="email@exemplo.com" required>
+
+          <label for="cidadeUsuario">Cidade</label>
+          <input type="text" id="cidadeUsuario" placeholder="Cidade" required>
+
+          <div class="acoes-form">
+            <button type="submit" id="btnUsuario">Adicionar</button>
+            <button type="button" id="cancelarUsuario" class="botao-secundario" hidden>Cancelar</button>
+          </div>
+        </form>
+
+        <div id="listaUsuarios" class="lista-cards lista-autores" aria-live="polite"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Mural News - Dinamismo na Web</p>
+  </footer>
 </body>
-
 </html>

@@ -1,218 +1,431 @@
+:root {
+  --fundo: #e6e7e5;
+  --papel: #ffffff;
+  --tinta: #141414;
+  --texto: #242424;
+  --fraco: #6f6f6f;
+  --linha: #dedbd3;
+  --erro: #9f332c;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #0f172a; /* Azul escuro quase preto */
-    color: #e2e8f0; /* Texto claro/cinza-azulado */
-    line-height: 1.6;
-    padding-bottom: 60px;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--texto);
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    var(--fundo);
+  background-size: 8px 8px, auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* =====================================
-   2. HEADER INTELIGENTE
-   ===================================== */
-header {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column-reverse; /* Inverte para a logo ficar em destaque no mobile */
-    gap: 20px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-@media (min-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-header .texto1 {
-    max-width: 600px;
+button {
+  border: 0;
 }
 
-header .titulo {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 12px;
-    background: linear-gradient(to right, #38bdf8, #818cf8); /* Efeito de texto gradiente */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+[hidden] {
+  display: none !important;
 }
 
-header p {
-    font-size: 1.1rem;
-    color: #94a3b8;
+.pagina {
+  width: min(1160px, calc(100% - 32px));
+  margin: 56px auto 0;
+  padding: 0 26px 34px;
+  background: var(--papel);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
 }
 
-header .logo {
-    width: 65px;
-    height: 65px;
-    border-radius: 16px;
-    background-color: #1e293b;
-    border: 2px solid #334155;
-    padding: 5px;
+.menu-superior {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 -26px;
+  padding: 0 26px;
+  color: #ffffff;
+  background: var(--tinta);
 }
 
-/* =====================================
-   3. ESTRUTURA DO LAYOUT (GRID)
-   ===================================== */
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
+.marca {
+  font-weight: 900;
+}
+
+.links-menu {
+  display: flex;
+  gap: 18px;
+  color: #d1d1d1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.links-menu a:hover {
+  color: #ffffff;
+}
+
+.topo {
+  padding: 34px 0 22px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.topo p,
+.rodape p,
+.card p,
+#mensagem {
+  margin: 0;
+}
+
+.topo p {
+  color: var(--fraco);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--tinta);
+  line-height: 1;
+}
+
+h1 {
+  margin-top: 8px;
+  font-size: 5.4rem;
+  text-transform: uppercase;
+}
+
+.barra-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 2px solid var(--tinta);
+}
+
+#mensagem {
+  color: var(--fraco);
+  font-size: 0.9rem;
+}
+
+#mensagem.erro {
+  color: var(--erro);
+}
+
+.numeros {
+  display: flex;
+  gap: 18px;
+  margin: 0;
+}
+
+.numeros dt {
+  color: var(--fraco);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.numeros dd {
+  margin: 2px 0 0;
+  color: var(--tinta);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 32px;
+  align-items: start;
+  padding-top: 28px;
+}
+
+.painel {
+  min-width: 0;
+}
+
+.painel-cabecalho {
+  margin-bottom: 16px;
+}
+
+.painel-cabecalho h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.painel-autores {
+  padding-left: 24px;
+  border-left: 1px solid var(--linha);
+}
+
+.formulario {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  margin-bottom: 24px;
+  border: 1px solid var(--linha);
+  background: #f8f7f4;
+}
+
+label {
+  color: var(--tinta);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  border: 1px solid #cec8bd;
+  border-radius: 0;
+  color: var(--texto);
+  background: #ffffff;
+}
+
+textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--tinta);
+  outline-offset: 1px;
+}
+
+.acoes-form,
+.acoes-card {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+button {
+  min-height: 36px;
+  padding: 8px 13px;
+  color: #ffffff;
+  background: var(--tinta);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2b2b2b;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.botao-secundario {
+  border: 1px solid var(--tinta);
+  color: var(--tinta);
+  background: transparent;
+}
+
+.botao-secundario:hover {
+  color: #ffffff;
+  background: var(--tinta);
+}
+
+.botao-editar,
+.botao-remover {
+  min-height: 31px;
+  padding: 7px 10px;
+}
+
+.lista-cards {
+  display: grid;
+  gap: 18px;
+}
+
+.lista-noticias {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lista-noticias .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.lista-noticias .acoes-card {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.card {
+  min-width: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #ddd7cb;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  line-height: 1.05;
+}
+
+.card p {
+  color: var(--fraco);
+  line-height: 1.42;
+}
+
+.card .info {
+  margin: 8px 0;
+  color: var(--tinta);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.lista-noticias .card:first-child {
+  grid-column: span 2;
+}
+
+.lista-noticias .card:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
+.lista-noticias .card:first-child h3 {
+  font-size: 2.45rem;
+}
+
+.lista-autores .card {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.lista-autores .card img {
+  grid-row: 1 / 4;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.lista-autores .card h3,
+.lista-autores .card p,
+.lista-autores .acoes-card {
+  grid-column: 2;
+}
+
+.lista-autores .card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.vazio {
+  padding: 14px;
+  border: 1px dashed #aaa49a;
+  color: var(--fraco);
+  background: #f8f7f4;
+}
+
+.rodape {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto 46px;
+  padding: 22px 26px;
+  color: var(--fraco);
+  background: var(--papel);
+  border-top: 1px solid var(--linha);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 900px) {
+  .pagina {
+    margin-top: 22px;
+  }
+
+  .grade {
     grid-template-columns: 1fr;
-    gap: 40px;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .painel-cabecalho h2,
+  .lista-noticias .card:first-child h3 {
+    font-size: 2rem;
+  }
+
+  .painel-autores {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .lista-noticias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (min-width: 768px) {
-    main {
-        grid-template-columns: 1fr 2fr; /* Coluna menor na esquerda, maior na direita */
-    }
-}
+@media (max-width: 620px) {
+  .pagina,
+  .rodape {
+    width: min(100% - 18px, 1160px);
+  }
 
-.titulo2 {
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #38bdf8; /* Azul neon para destacar */
-    margin-bottom: 25px;
-    font-weight: 700;
-}
+  .pagina {
+    padding-inline: 16px;
+  }
 
-/* =====================================
-   4. RECURSOS (CARD DA ESQUERDA)
-   ===================================== */
-.container-main {
-    background-color: #1e293b; /* Fundo do card */
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #334155;
-    height: fit-content;
-}
+  .menu-superior {
+    margin-inline: -16px;
+    padding: 14px 16px;
+  }
 
-.lista {
-    list-style: none;
-}
-
-.lista li {
-    background-color: #0f172a;
-    margin-bottom: 12px;
-    padding: 15px;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    border-left: 4px solid #818cf8; /* Detalhe roxo na lateral */
-}
-
-/* =====================================
-   5. MURAL DE POSTAGENS (DIREITA)
-   ===================================== */
-.Post1 {
-    display: flex;
+  .barra-status {
+    align-items: flex-start;
     flex-direction: column;
-    gap: 30px;
-}
+  }
 
-/* Estilo unificado para os três tipos de posts */
-.postagem, .postagem2, .postagem3 {
-    background-color: #1e293b;
-    padding: 30px;
-    border-radius: 24px;
-    border: 1px solid #334155;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-}
+  h1 {
+    font-size: 2.7rem;
+  }
 
-.postagem h3, .postagem2 h3, .postagem3 h3 {
-    font-size: 1.4rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.postagem p, .postagem2 p, .postagem3 p {
-    color: #94a3b8;
-    margin-bottom: 20px;
-}
-
-.postagem img, .postagem2 img, .postagem3 img {
-    width: 100%;
-    border-radius: 16px;
-    margin-bottom: 25px;
-    border: 1px solid #334155;
-}
-
-/* =====================================
-   6. CAIXA DE COMENTÁRIOS INTERATIVA
-   ===================================== */
-.comment-box {
-    background-color: #0f172a;
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid #334155;
-}
-
-.comment-box label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: #94a3b8;
-    letter-spacing: 0.5px;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.comment-box textarea {
-    width: 100%;
-    height: 70px;
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 12px;
-    color: #ffffff;
-    font-size: 0.95rem;
-    resize: none;
-    transition: all 0.3s;
-}
-
-/* Quando o usuário clica para digitar */
-.comment-box textarea:focus {
-    outline: none;
-    border-color: #38bdf8;
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-}
-
-/* Botão estilo aplicativo moderno */
-.comment-box button {
-    margin-top: 12px;
-    width: 100%;
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-    color: #0f172a;
-    font-weight: 700;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: transform 0.2s, opacity 0.2s;
-}
-
-.comment-box button:hover {
-    transform: translateY(-1px);
-    opacity: 0.95;
-}
-
-/* =====================================
-   7. RODAPÉ
-   ===================================== */
-footer {
-    text-align: center;
-    margin-top: 80px;
-    color: #64748b;
-    font-size: 0.85rem;
+  .lista-noticias,
+  .lista-noticias .card:first-child {
+    grid-template-columns: 1fr;
+    grid-column: auto;
+  }
 }
