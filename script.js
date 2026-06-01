@@ -1,33 +1,6 @@
 const apiUsuarios = "https://jsonplaceholder.typicode.com/users";
 const apiPosts = "https://jsonplaceholder.typicode.com/posts";
 
-const usuariosExemplo = [
-  { id: 1, name: "Ana Ribeiro", email: "ana.ribeiro@email.com", city: "São Paulo" },
-  { id: 2, name: "Carlos Lima", email: "carlos.lima@email.com", city: "Curitiba" },
-  { id: 3, name: "Marina Costa", email: "marina.costa@email.com", city: "Recife" }
-];
-
-const postsExemplo = [
-  {
-    id: 1,
-    userId: 1,
-    title: "Slides da apresentação",
-    body: "Já deixei os slides revisados. Quem for apresentar pode conferir antes da aula."
-  },
-  {
-    id: 2,
-    userId: 2,
-    title: "Grupo de estudo",
-    body: "Vamos revisar JavaScript na quinta, depois do intervalo."
-  },
-  {
-    id: 3,
-    userId: 3,
-    title: "Entrega do projeto",
-    body: "Lembrem de testar o formulário e deixar o repositório organizado."
-  }
-];
-
 let usuarios = [];
 let posts = [];
 let novoIdUsuario = 1;
