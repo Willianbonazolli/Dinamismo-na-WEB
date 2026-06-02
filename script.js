@@ -132,14 +132,14 @@ function salvarPost(evento) {
   }
   if (idPost.value === "") {
     posts.unshift({ id: novoIdPost++, ...dados });
-    mostrarAviso("Adicionado.");
+    mostrarAviso("Post adicionado.");
   } else {
     const post = pegarPost(idPost.value);
     if (!post) { mostrarAviso("Post não encontrado.", true); return; }
     post.title  = dados.title;
     post.body   = dados.body;
     post.userId = dados.userId;
-    mostrarAviso("Salvo.");
+    mostrarAviso("Post salvo.");
   }
   limparPost();
   atualizarTela();
@@ -162,7 +162,7 @@ function removerPost(id) {
   posts = posts.filter(function(p) { return p.id !== Number(id); });
   limparPost();
   atualizarTela();
-  mostrarAviso("Removido.");
+  mostrarAviso("Post removido.");
 }
 
 function limparPost() {
