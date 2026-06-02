@@ -17,10 +17,6 @@
       </div>
     </nav>
 
-    <header class="topo">
-      <h1></h1>
-    </header>
-
     <section class="barra-status" aria-label="Resumo">
       <p id="mensagem" aria-live="polite">Carregando...</p>
 
@@ -67,24 +63,6 @@
         <div class="painel-cabecalho">
           <h2 id="tituloUsuarios">Autores</h2>
         </div>
-
-        <form id="formUsuario" class="formulario" autocomplete="off">
-          <input type="hidden" id="idUsuario">
-
-          <label for="nomeUsuario">Nome</label>
-          <input type="text" id="nomeUsuario" placeholder="Nome" required>
-
-          <label for="emailUsuario">E-mail</label>
-          <input type="email" id="emailUsuario" placeholder="email@exemplo.com" required>
-
-          <label for="cidadeUsuario">Cidade</label>
-          <input type="text" id="cidadeUsuario" placeholder="Cidade" required>
-
-          <div class="acoes-form">
-            <button type="submit" id="btnUsuario">Adicionar</button>
-            <button type="button" id="cancelarUsuario" class="botao-secundario" hidden>Cancelar</button>
-          </div>
-        </form>
 
         <div id="listaUsuarios" class="lista-cards lista-autores" aria-live="polite"></div>
       </aside>
